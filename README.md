@@ -3,11 +3,6 @@ Role Name
 
 Installs homeassistant to an ubuntu box
 
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
-
 Role Variables
 --------------
 # default variables
@@ -18,7 +13,7 @@ Role Variables
 | homeassistant_virtualenv| /home/{{ homeassistant_user }}/.virutalenvironments/homeassistant | virtualenv location |
 | homeassistant_systemd| true | install a systemd file for homeassistant | 
 
-# optional roles
+# optional variables
 | variable | description |
 | --- | --- |
 | homeassistant_git_config | use a git repo as homeassistant config |
