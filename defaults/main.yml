@@ -1,0 +1,8 @@
+---
+# defaults file for ansible-homeassistant
+
+homeassistant_user: homeassistant
+homeassistant_config: /home/{{ homeassistant_user }}/.homeassistant_config
+homeassistant_version: latest
+homeassistant_virtualenv: /home/{{ homeassistant_user }}/.virutalenvironments/homeassistant
+homeassistant_systemd: true

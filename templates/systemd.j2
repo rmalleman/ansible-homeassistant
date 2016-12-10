@@ -1,0 +1,15 @@
+[Unit]
+Description=Home Assistant
+After=network.target
+
+[Service]
+{% if homeassistant_environment_file is defined %}
+EnvironmentFile={{ homeassistant_environment_file }}
+{% endif %}
+Type=simple
+User={{ homeassistant_user }}
+ExecStartPre=source {{ homeassistant_virtualenv }}/bin/activate 
+ExecStart={{ homeassistant_virtualenv }}/bin/hass -c "{{ homeassistant_config }}"
+
+[Install]
+WantedBy=multi-user.target
