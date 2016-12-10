@@ -29,7 +29,6 @@
   git:
     repo: "{{ homeassistant_git_config }}"
     dest: "{{ homeassistant_config }}"
-    update: no
   when: homeassistant_git_config
   become_user: "{{ homeassistant_user }}"
   become: yes
