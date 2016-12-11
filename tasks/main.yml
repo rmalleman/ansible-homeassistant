@@ -5,9 +5,13 @@
   user: name={{ homeassistant_user }}
   become: yes
 
-- name: Install python virutalenv
+- name: Install python virtualenv
   apt: name=python-virtualenv state=present update_cache=yes
   become: yes
+
+- name: create virtualenv
+  command: virtualenv -p python3.4 {{ homeassistant_virtualenv }}
+
 
 - name: Install homeassistant
   pip: 
