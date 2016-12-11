@@ -22,7 +22,7 @@
     src=systemd.j2
     dest=/etc/systemd/system/homeassistant.service
     mode=0755
-  when: homeassistant_systemd
+  when: homeassistant_systemd == true
   become: yes
 
 - name: install config from git
