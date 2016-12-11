@@ -11,7 +11,8 @@
 
 - name: create virtualenv
   command: virtualenv -p python3.4 {{ homeassistant_virtualenv }}
-
+  become_user: "{{ homeassistant_user }}"
+  become: yes
 
 - name: Install homeassistant
   pip: 
