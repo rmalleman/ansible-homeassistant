@@ -1,0 +1,17 @@
+author "Matt Alleman"
+description "Upstart Script to run home assistant"
+
+setuid {{ homeassistant_user }}
+setgid nogroup
+start on runlevel [2345]
+stop on runlevel [016]
+
+respawn
+
+script
+    set -a
+{% if homeassistant_environment_file is defined %}
+    . {{ homeassistant_environment_file }}
+{% endif %}
+   {{ homeassistant_virtualenvironment }}/bin/hass
+end script
