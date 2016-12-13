@@ -5,9 +5,12 @@
   user: name={{ homeassistant_user }}
   become: yes
 
-- name: Install python virtualenv
-  apt: name=python-virtualenv state=present update_cache=yes
+- name: Install apt dependencies 
+  apt: name={{ item }} state=latest update_cache=yes
   become: yes
+  with_items:
+    - python-virtualenv
+    - git
 
 - name: create virtualenv
   command: virtualenv -p python3.4 {{ homeassistant_virtualenv }}
@@ -36,8 +39,8 @@
     src=systemd.j2
     dest=/etc/systemd/system/homeassistant.service
     mode=0755
-  when: homeassistant_systemd == 'true'
   become: yes
+  when: homeassistant_systemd == 'true'
 
 - name: install config from git
   git:
