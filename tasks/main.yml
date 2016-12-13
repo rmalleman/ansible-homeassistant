@@ -14,20 +14,29 @@
   become_user: "{{ homeassistant_user }}"
   become: yes
 
-- name: Install homeassistant
+- name: Install homeassistant latest version
   pip: 
     name: homeassistant
-    virtualenv: "{{ homeassistant_virtualenv }}"
-    virtualenv_python: python3
+    executable: "{{ homeassistant_virtualenv }}/bin/pip"
   become_user: "{{ homeassistant_user }}"
   become: yes
+ when: homeassistant_version == 'latest'
+ 
+- name: Install homeassistant version {{ homeassistant_version }}
+  pip: 
+    name: homeassistant
+    version: {{ homeassistant_version }}
+    executable: "{{ homeassistant_virtualenv }}/bin/pip"
+  become_user: "{{ homeassistant_user }}"
+  become: yes
+  when: homeassistant_version != 'latest'
 
 - name: install systemd file
   template: 
     src=systemd.j2
     dest=/etc/systemd/system/homeassistant.service
     mode=0755
-  when: homeassistant_systemd == true
+  when: homeassistant_systemd == 'true'
   become: yes
 
 - name: install config from git
