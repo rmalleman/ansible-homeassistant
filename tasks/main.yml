@@ -49,3 +49,6 @@
   when: homeassistant_git_config
   become_user: "{{ homeassistant_user }}"
   become: yes
+
+- name: start homeassistant service
+  service: name=homeassistant state=started enabled=yes
