@@ -37,7 +37,7 @@
 - name: install upstart  file
   template:
     src=upstart.conf.j2
-    dest=/etc/systemd/system/homeassistant.service
+    dest=/etc/init/homeassistant.conf
     mode=0755
   become: yes
 
