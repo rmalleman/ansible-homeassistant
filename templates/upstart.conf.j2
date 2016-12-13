@@ -13,5 +13,5 @@ script
 {% if homeassistant_environment_file is defined %}
     . {{ homeassistant_environment_file }}
 {% endif %}
-   {{ homeassistant_virtualenv }}/bin/hass
+   {{ homeassistant_virtualenv }}/bin/hass -c "{{ homeassistant_config }}"
 end script
