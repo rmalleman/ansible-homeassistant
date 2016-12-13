@@ -20,12 +20,12 @@
     executable: "{{ homeassistant_virtualenv }}/bin/pip"
   become_user: "{{ homeassistant_user }}"
   become: yes
- when: homeassistant_version == 'latest'
+  when: homeassistant_version == 'latest'
  
 - name: Install homeassistant version {{ homeassistant_version }}
   pip: 
     name: homeassistant
-    version: {{ homeassistant_version }}
+    version: "{{ homeassistant_version }}"
     executable: "{{ homeassistant_virtualenv }}/bin/pip"
   become_user: "{{ homeassistant_user }}"
   become: yes
