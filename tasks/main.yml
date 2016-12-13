@@ -5,7 +5,7 @@
   user: name={{ homeassistant_user }}
   become: yes
 
-- name: Install apt dependencies 
+- name: Install apt dependencies
   apt: name={{ item }} state=latest update_cache=yes
   become: yes
   with_items:
@@ -18,15 +18,15 @@
   become: yes
 
 - name: Install homeassistant latest version
-  pip: 
+  pip:
     name: homeassistant
     executable: "{{ homeassistant_virtualenv }}/bin/pip"
   become_user: "{{ homeassistant_user }}"
   become: yes
   when: homeassistant_version == 'latest'
- 
+
 - name: Install homeassistant version {{ homeassistant_version }}
-  pip: 
+  pip:
     name: homeassistant
     version: "{{ homeassistant_version }}"
     executable: "{{ homeassistant_virtualenv }}/bin/pip"
@@ -34,21 +34,17 @@
   become: yes
   when: homeassistant_version != 'latest'
 
-- name: install systemd file
-  template: 
-    src=systemd.j2
+- name: install upstart  file
+  template:
+    src=upstart.conf.j2
     dest=/etc/systemd/system/homeassistant.service
     mode=0755
   become: yes
-  when: homeassistant_systemd == 'true'
 
 - name: install config from git
   git:
     repo: "{{ homeassistant_git_config }}"
     dest: "{{ homeassistant_config }}"
-  when: homeassistant_git_config
   become_user: "{{ homeassistant_user }}"
   become: yes
-
-- name: start homeassistant service
-  service: name=homeassistant state=started enabled=yes
+  when: homeassistant_git_config
