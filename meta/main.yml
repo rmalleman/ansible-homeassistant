@@ -138,7 +138,7 @@ galaxy_info:
   #  - utopic
   #  - vivid
   #  - wily
-    - xenial
+     - xenial
   #  - yakkety
   #- name: Debian
   #  versions:
