@@ -25,7 +25,7 @@ script:
     ansible-playbook /etc/ansible/roles/ansible-homeassistant/tests/test.yml --syntax-check
 
     docker exec --tty "$(cat ${container_id})" env TERM=xterm
-    ansible-playbook /etc/ansible/roles/ansible_homeassistant/tests/test.yml
+    ansible-playbook /etc/ansible/roles/ansible-homeassistant/tests/test.yml
 
 notifications:
   # Notify Ansible Galaxy when a role builds successfully.
