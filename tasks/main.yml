@@ -24,6 +24,8 @@
   become_user: "{{ homeassistant_user }}"
   become: yes
   when: homeassistant_version == 'latest'
+  notify:
+    - restart homeassistant
 
 - name: Install homeassistant version {{ homeassistant_version }}
   pip:
@@ -33,6 +35,8 @@
   become_user: "{{ homeassistant_user }}"
   become: yes
   when: homeassistant_version != 'latest'
+  notify:
+    - restart homeassistant
 
 - name: install upstart  file
   template:
@@ -48,3 +52,5 @@
   become_user: "{{ homeassistant_user }}"
   become: yes
   when: homeassistant_git_config
+  notify:
+    - restart homeassistant
