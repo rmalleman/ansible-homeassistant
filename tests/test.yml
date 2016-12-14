@@ -1,5 +1,5 @@
 ---
-hosts: all 
+- hosts: all
 
   roles:
-    - ansible-homeassistant
+     - { role: ansible-homeassistant }
