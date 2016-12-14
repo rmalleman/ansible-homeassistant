@@ -9,6 +9,7 @@
   apt: name={{ item }} state=latest update_cache=yes
   become: yes
   with_items:
+    - python3
     - python-virtualenv
     - git
 
