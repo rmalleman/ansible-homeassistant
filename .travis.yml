@@ -13,7 +13,6 @@ services:
 before_install:
   - 'docker pull geerlingguy/docker-${distro}-ansible:latest'
   
-
   # Create a random file to store the container ID. 
   - container_id=$(mktemp)
 
@@ -24,7 +23,7 @@ script:
   - >
     docker exec --tty "$(cat ${container_id})" env TERM=xterm
     ansible-playbook /etc/ansible/roles/ansible-homeassistant/tests/test.yml --syntax-check
-	
+
     docker exec --tty "$(cat ${container_id})" env TERM=xterm
     ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml
 
