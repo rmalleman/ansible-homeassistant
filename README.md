@@ -1,7 +1,7 @@
 Role Name
 =========
 
-Installs homeassistant to an ubuntu box
+Installs homeassistant to an ubuntu box.
 
 Role Variables
 --------------
