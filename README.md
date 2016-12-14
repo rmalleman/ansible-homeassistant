@@ -19,14 +19,9 @@ Role Variables
 | homeassistant_git_config | use a git repo as homeassistant config |
 | homeassistant_environment_file | environment variable file to pass to systemd |
 
-Dependencies
-------------
-
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
