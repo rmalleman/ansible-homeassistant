@@ -4,3 +4,5 @@
   service: name=homeassistant state=restarted
   become: yes
 
+- name: reload systemctl
+  command: systemctl daemon-reload

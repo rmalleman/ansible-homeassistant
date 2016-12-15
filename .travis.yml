@@ -4,6 +4,7 @@ sudo: required
 
 env:
   - distro: ubuntu1604
+    init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 services:
@@ -16,7 +17,7 @@ before_install:
   - container_id=$(mktemp)
 
   # Run container detached, with our role mounted inside.
-  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/ansible-homeassistant:ro ${run_opts} geerlingguy/docker-${distro}-ansible:latest  > "${container_id}"'
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/ansible-homeassistant:ro ${run_opts} geerlingguy/docker-${distro}-ansible:latest "${init}" > "${container_id}"'
 
 script:
   - >

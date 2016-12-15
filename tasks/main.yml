@@ -39,14 +39,15 @@
   notify:
     - restart homeassistant
 
-- name: install upstart  file
-  template:
-    src=upstart.conf.j2
-    dest=/etc/init/homeassistant.conf
+- name: install systemd file
+  template: 
+    src=systemd.j2
+    dest=/etc/systemd/system/homeassistant.service
     mode=0755
+  when: homeassistant_systemd == 'true'
   become: yes
   notify:
-    - restart homeassistant
+    - reload systemctl
 
 - name: install config from git
   git:
