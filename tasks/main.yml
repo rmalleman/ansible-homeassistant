@@ -14,7 +14,7 @@
     - git
 
 - name: create virtualenv
-  command: virtualenv -p python3.4 {{ homeassistant_virtualenv }}
+  command: virtualenv -p {{ homeassistant_python_executable  }}  {{ homeassistant_virtualenv }}
   become_user: "{{ homeassistant_user }}"
   become: yes
 
