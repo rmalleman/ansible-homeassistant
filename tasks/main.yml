@@ -45,6 +45,8 @@
     dest=/etc/init/homeassistant.conf
     mode=0755
   become: yes
+  notify:
+    - restart homeassistant
 
 - name: install config from git
   git:

@@ -2,7 +2,8 @@ Role Name
 =========
 [![Build
 Status](https://travis-ci.org/rmalleman/ansible-homeassistant.svg?branch=master)](https://travis-ci.org/rmalleman/ansible-homeassistant)
-Installs homeassistant to an ubuntu box.
+
+Installs [homeassistant](https://home-assistant.io/) to an ubuntu box.
 
 Role Variables
 --------------
