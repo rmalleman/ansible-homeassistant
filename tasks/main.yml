@@ -52,6 +52,6 @@
     dest: "{{ homeassistant_config }}"
   become_user: "{{ homeassistant_user }}"
   become: yes
-  when: homeassistant_git_config
+  when: homeassistant_git_config is defined
   notify:
     - restart homeassistant
