@@ -15,7 +15,7 @@
     - reload systemctl
 
 - name: Install apt dependencies
-  apt: name={{ item }} state=latest update_cache=yes
+  apt: name={{ item }} state=latest 
   become: yes
   with_items:
     - python3
