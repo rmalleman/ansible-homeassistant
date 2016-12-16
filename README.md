@@ -1,4 +1,4 @@
-Role Name
+ansible-homeassistant
 =========
 [![Build
 Status](https://travis-ci.org/rmalleman/ansible-homeassistant.svg?branch=master)](https://travis-ci.org/rmalleman/ansible-homeassistant)
@@ -13,7 +13,6 @@ Role Variables
 | homeassistant_user | homeassistant | user to run homeassistant as |
 | homeassistant_config| /home/{{ homeassistant_user }}/.homeassistant | config directory |
 | homeassistant_virtualenv| /home/{{ homeassistant_user }}/.virutalenvironments/homeassistant | virtualenv location |
-| homeassistant_systemd| true | install a systemd file for homeassistant | 
 
 # optional variables
 | variable | description |
