@@ -22,6 +22,11 @@
     - python-virtualenv
     - git
 
+- name: Install apt dependencies
+  apt: name={{ item }} state=latest update_cache=true 
+  become: yes
+  with_items: "{{ homeassistant_additional_apt_dependencies }}"
+
 - name: check if virtualenv exists
   stat:
     path: "{{ homeassistant_virtualenv }}/bin/python"
@@ -53,6 +58,16 @@
   become_user: "{{ homeassistant_user }}"
   become: yes
   when: homeassistant_version != 'latest'
+  notify:
+    - restart homeassistant
+
+- name: Install additional pip dependencies
+  pip:
+    name: "{{ homeassistant_additional_pip_dependencies | join(' ') }}"
+    executable: "{{ homeassistant_virtualenv }}/bin/pip"
+  become_user: "{{ homeassistant_user }}"
+  become: yes
+  when: homeassistant_additional_pip_dependencies|length > 0
   notify:
     - restart homeassistant
 
