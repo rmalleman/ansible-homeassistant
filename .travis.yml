@@ -26,7 +26,7 @@ script:
 
     docker exec --tty "$(cat ${container_id})" env TERM=xterm
     ansible-playbook /etc/ansible/roles/ansible-homeassistant/tests/test.yml
-  - idempotence=$(mktemp)
+    #- idempotence=$(mktemp)
     # - >
     #docker exec "$(cat ${container_id})"
     #ansible-playbook /etc/ansible/roles/ansible_homeassistant/tests/test.yml
@@ -37,7 +37,5 @@ script:
     #&& (echo 'Idempotence test: pass' && exit 0)
     #|| (echo 'Idempotence test: fail' && exit 1)
 
-
-
 notifications:
-  # Notify Ansible Galaxy when a role builds successfully.
+    webhooks: https://galaxy.ansible.com/api/v1/notifications/
