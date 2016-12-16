@@ -1,8 +1,10 @@
 ---
 # handlers file for ansible-homeassistant
-- name: restart homeassistant
-  service: name=homeassistant state=restarted
-  become: yes
 
 - name: reload systemctl
   command: systemctl daemon-reload
+  become: yes
+
+- name: restart homeassistant
+  service: name=homeassistant state=restarted
+  become: yes
