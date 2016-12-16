@@ -5,6 +5,16 @@
   user: name={{ homeassistant_user }}
   become: yes
 
+- name: install systemd file
+  template: 
+    src=systemd.j2
+    dest=/etc/systemd/system/homeassistant.service
+    mode=0755
+  when: homeassistant_systemd == 'true'
+  become: yes
+  notify:
+    - reload systemctl
+
 - name: Install apt dependencies
   apt: name={{ item }} state=latest update_cache=yes
   become: yes
@@ -38,16 +48,6 @@
   when: homeassistant_version != 'latest'
   notify:
     - restart homeassistant
-
-- name: install systemd file
-  template: 
-    src=systemd.j2
-    dest=/etc/systemd/system/homeassistant.service
-    mode=0755
-  when: homeassistant_systemd == 'true'
-  become: yes
-  notify:
-    - reload systemctl
 
 - name: install config from git
   git:
