@@ -22,10 +22,18 @@
     - python-virtualenv
     - git
 
+- name: check if virtualenv exists
+  stat:
+    path: "{{ homeassistant_virtualenv }}/bin/python"
+  register:
+    stat_result
+
 - name: create virtualenv
   command: virtualenv -p {{ homeassistant_python_executable  }}  {{ homeassistant_virtualenv }}
   become_user: "{{ homeassistant_user }}"
   become: yes
+  when:
+    stat_result.stat.exists == False
 
 - name: Install homeassistant latest version
   pip:
