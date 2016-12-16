@@ -19,7 +19,8 @@ Role Variables
 | --- | --- |
 | homeassistant_git_config | use a git repo as homeassistant config |
 | homeassistant_environment_file | environment variable file to pass to systemd |
-
+| homeassistant_additional_pip_dependencies | list of additional pip dependencies to intall |
+| homeassistant_additional_apt_dependencies | list ofadditional apt dependencies to intall |
 
 Example Playbook
 ----------------
