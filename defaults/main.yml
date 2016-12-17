@@ -2,7 +2,7 @@
 # defaults file for ansible-homeassistant
 
 homeassistant_user: homeassistant
-homeassistant_config: /home/{{ homeassistant_user }}/.homeassistant_config
+homeassistant_config: /home/{{ homeassistant_user }}/.homeassistant
 homeassistant_version: latest
 homeassistant_virtualenv: /home/{{ homeassistant_user }}/.virtualenvironments/homeassistant
 
